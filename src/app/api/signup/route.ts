@@ -3,7 +3,6 @@ import UserModel from "@/model/User";
 import bcrypt from "bcryptjs";
 import { sendVerificationEmail } from "@/helpers/sendVerificationEmail";
 import { NextResponse, NextRequest } from "next/server";
-import { SourceCode } from "eslint";
 
 
 export async function POST(request: Request) {
