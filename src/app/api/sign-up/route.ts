@@ -2,8 +2,6 @@ import dbConnect from "@/lib/dbConnect";
 import UserModel from "@/model/User";
 import bcrypt from "bcryptjs";
 import { sendVerificationEmail } from "@/helpers/sendVerificationEmail";
-import { NextResponse, NextRequest } from "next/server";
-
 
 export async function POST(request: Request) {
     await dbConnect();
@@ -20,6 +18,15 @@ export async function POST(request: Request) {
             return Response.json({
                 success: false,
                 message: "Username already taken",
+            }, { status: 400 });
+        }
+
+        const existingEmail = await UserModel.findOne({ email })
+
+        if (existingEmail) {
+            return Response.json({
+                success: false,
+                message: "User already Exists with this Email",
             }, { status: 400 });
         }
 

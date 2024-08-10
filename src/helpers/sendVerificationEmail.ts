@@ -10,7 +10,7 @@ export async function sendVerificationEmail(
     try {
         await resend.emails.send({
             from: 'Acme <onboarding@resend.dev>',
-            to: email,
+            to: "satish2106981396@gmail.com",
             subject: 'Feedback Ghost | Verification Code',
             react: VerificationEmail({ username, otp: verifyCode }),
         });
@@ -27,22 +27,3 @@ export async function sendVerificationEmail(
         }
     }
 }
-
-// export async function POST() {
-//     try {
-//         const { data, error } = await resend.emails.send({
-//             from: 'Acme <onboarding@resend.dev>',
-//             to: ['delivered@resend.dev'],
-//             subject: 'Hello world',
-//             react: VerificationEmail({ username: 'John' }),
-//         });
-
-//         if (error) {
-//             return Response.json({ error }, { status: 500 });
-//         }
-
-//         return Response.json(data);
-//     } catch (error) {
-//         return Response.json({ error }, { status: 500 });
-//     }
-// }
